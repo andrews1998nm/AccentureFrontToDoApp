@@ -69,6 +69,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/resources/android
-/resources/ios
+#/resources/android
+#/resources/ios
 /resources/README.md
