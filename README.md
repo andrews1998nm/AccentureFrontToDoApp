@@ -22,15 +22,13 @@ LUEGO FILTRAR LAS TAREAS POR LAS CATEGORIAS SELECCIONADAS. AL ELIMINAR UNA CATEG
 
 1.¿Cuáles fueron los principales desafíos que enfrentaste al implementar
 las nuevas funcionalidades?
-R/Tuve que leer documentacion para implementar la funcionalidad de REMOTE CONFIG y realizar la configuracion inicial para poder configurar la herramienta y que el cambio de la variable limitara o desbloqueara la funcionalidades.
-Ya habia trabajado con Firebase, pero no no habia utilizado la herramienta REMOTE CONFIG.
-Algunas de las funcionalidades de Ionic no funcionaban correctamente por lo que tuve que adaptarme al framework.
+R/Una de las principales dificultades fue la integración de Remote Config de Firebase. Aunque ya había trabajado con Firebase, esta herramienta era nueva para mí. Tuve que profundizar en su documentación para entender cómo funciona y cómo se usan en tiempo real. Es importante entender cómo funciona la app para cambiar o desactivar características específicas. Además, algunas características de Ionic tenían problemas y me obligaron a adaptar ciertas soluciones al framework. Este proceso me ayudó a mejorar mi habilidad para investigar y resolver problemas.
 
 2.¿Qué técnicas de optimización de rendimiento aplicaste y por qué?
-R/ Jugando con los datos de las variables para evitar hacer llamados innecesarios a los servicios y que pudieran ralentizar la funcionalidad del componente. los datos al ser locales no requieren de un llamado constante hacia los servicios o una subscripcion, pues practicamente son individuales para cada dispotivo, como una app offline.
+R/Optimizé el rendimiento evitando llamadas innecesarias a los servicios. Para conseguirlo, utilicé técnicas de gestión de datos locales y almacenamiento en caché. Al tratarse de datos que no necesitan actualizaciones frecuentes, prioricé almacenar y manipular las variables localmente, reduciendo la dependencia de subscripciones o solicitudes a servicios externos. Esto mejoró la velocidad de carga de los componentes y ahorró más recursos para el usuario.
 
 3.¿Cómo aseguraste la calidad y mantenibilidad del código?
-Se implementaron practicas SOLID en la medida de lo posible tratando de respetar cada servicio y componente tratando de crear un codigo que perdure con el tiempo y que no requiera de cambios sino de adiciones al codigo ya desarrollado.
+Para garantizar la calidad del código, seguí principios de diseño como SOLID, estructurando el proyecto en servicios y componentes altamente cohesionados y de responsabilidad única. Esto facilitó que las funcionalidades fueran modulares y reutilizables, reduciendo la necesidad de realizar cambios en el código existente y permitiendo adiciones futuras de forma más agil. Me aseguré de documentar el código y utilizar convenciones claras, lo que contribuye a que otros desarrolladores puedan comprender y trabajar fácilmente en el proyecto a largo plazo.
 
 
 
