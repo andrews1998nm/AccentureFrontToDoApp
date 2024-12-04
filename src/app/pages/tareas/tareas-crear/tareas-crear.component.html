@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarEdicion()" default-href="/">Confirmar</ion-button>
+    </ion-buttons>
+    <ion-title>Crear tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input [(ngModel)]="inputTitulo" label="TareaNombre" placeholder="Nombre de la tarea"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="inputDesc" label="TareaDescripcion" placeholder="Descripcion de la tarea"></ion-input>
+  </ion-item>
+</ion-content>`;

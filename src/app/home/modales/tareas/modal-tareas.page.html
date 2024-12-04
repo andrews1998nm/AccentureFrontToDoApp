@@ -1,0 +1,35 @@
+<ion-content class="ion-padding">
+  <ion-modal [isOpen]="isModalOpen" (willDismiss)="refrescarTareas($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancelar()">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title>Crear tarea</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="crearTarea()" [strong]="true">Confirmar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Titulo"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Titulo de la tarea"
+            [(ngModel)]="inputTitulo"
+          ></ion-input>
+          <ion-input
+            label="Descripcion"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Descripcion de la tarea"
+            [(ngModel)]="inputDescripcion"
+          ></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

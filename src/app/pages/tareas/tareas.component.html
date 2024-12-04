@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Lista de tareas
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar *ngIf="isOnBarraBusqueda" [(ngModel)]="barraBusqueda" placeholder="Buscar" show-clear-button="focus" [debounce]="500"
+      (ionInput)="filtrarTareas($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+
+  <ion-list>
+    <ion-item>
+      <ion-select (ionChange)="seleccionFiltroCategoria($event)" label="Categoria" [multiple]="true" placeholder="Sin filtros">
+        <ion-select-option *ngFor="let categoria of categoriasArray" value="{{categoria.id}}">{{categoria.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lista de Tareas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content id="ion-content" class="ion-padding-bottom">
+
+    <ion-grid>
+      <ion-row *ngIf="tareasArraySearch.length == 0 && barraBusqueda === '' && categoriasSeleccionadas.length == 0">
+        <ion-col *ngFor="let tarea of tareasArray; let i = index" size="12" size-sm="12" size-md="6" size-lg="4">
+          <ion-card>
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            <ion-card-header>
+              <ion-card-title>{{tarea.titulo}}</ion-card-title>
+              <ion-card-subtitle>
+                <ion-select (ionChange)="SeleccionCategoria($event,i)" label="Categoria" placeholder="Seleccione una categoria" value="{{validaTareaCategoria(tarea)}}">
+                  <ion-icon slot="start" name="bookmarks-sharp" aria-hidden="true"></ion-icon>
+                  <ion-select-option *ngFor="let categoria of categoriasArray" value="{{categoria.id}}">{{categoria.nombre}}</ion-select-option>
+                </ion-select>
+              </ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{tarea.descripcion}}
+            </ion-card-content>
+
+            <ion-button (click)="completarTarea(i)" *ngIf="!tarea.completada" fill="clear">Completar tarea</ion-button>
+            <ion-button (click)="completarTarea(i)" *ngIf="tarea.completada" fill="clear">
+              <ion-icon name="checkmark-done-sharp"></ion-icon>
+            </ion-button>
+            <ion-button (click)="eliminarTarea(i)" color="danger" fill="clear">Eliminar tarea</ion-button>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <!-- CONSULTA DE BARRA DE BUSQUEDA-->
+      <ion-row *ngIf="tareasArraySearch.length > 0">
+        <ion-col *ngFor="let tarea of tareasArraySearch; let i = index" size="12" size-sm="12" size-md="6" size-lg="4">
+          <ion-card>
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            <ion-card-header>
+              <ion-card-title>{{tarea.titulo}}</ion-card-title>
+              <ion-card-subtitle>
+                <ion-select (ionChange)="SeleccionCategoria($event,i)" label="Categoria" placeholder="Seleccione una categoria" value="{{validaTareaCategoria(tarea)}}">
+                  <ion-icon slot="start" name="bookmarks-sharp" aria-hidden="true"></ion-icon>
+                  <ion-select-option *ngFor="let categoria of categoriasArray" value="{{categoria.id}}">{{categoria.nombre}}</ion-select-option>
+                </ion-select>
+              </ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{tarea.descripcion}}
+            </ion-card-content>
+
+            <ion-button (click)="completarTarea(i)" *ngIf="!tarea.completada" fill="clear">Completar</ion-button>
+            <ion-button (click)="completarTarea(i)" *ngIf="tarea.completada" fill="clear">
+              <ion-icon name="checkmark-done-sharp"></ion-icon>
+            </ion-button>
+            <ion-button (click)="eliminarTarea(i)" color="danger" fill="clear">Eliminar</ion-button>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </ion-content>

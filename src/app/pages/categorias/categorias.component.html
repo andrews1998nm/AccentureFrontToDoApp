@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Lista de categorias
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="barraBusqueda" placeholder="Buscar" show-clear-button="focus" [debounce]="500"
+      (ionInput)="filtrarCategorias($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lista de categorias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+
+    <ion-list *ngIf="categoriasArraySearch.length == 0 && barraBusqueda === ''">
+      <ion-item *ngFor="let categoria of categoriasArray; let i = index">
+        <ion-label> {{categoria.nombre}}</ion-label>
+
+        
+        <ion-button slot="end" [routerLink]="['categorias/editar/', categoria.id]" color="warning" id="abrir-categorias">Editar categoria</ion-button>
+        <ion-button slot="end" (click)="eliminarCategoria(i)" color="danger" fill="clear">Eliminar categoria</ion-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- CONSULTA DE BARRA DE BUSQUEDA-->
+    <ion-list *ngIf="categoriasArraySearch.length > 0">
+      <ion-item *ngFor="let categoria of categoriasArraySearch; let i = index">
+        <ion-label> {{categoria.nombre}}
+            <ion-button (click)="eliminarCategoria(i)" color="danger" fill="clear">Eliminar</ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>

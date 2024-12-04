@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarEdicion()" default-href="/">Confirmar</ion-button>
+    </ion-buttons>
+    <ion-title>Crear categoria</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input [(ngModel)]="inputCategoria" label="Categoria" placeholder="Nombre de categoria"></ion-input>
+  </ion-item>
+</ion-content>`;

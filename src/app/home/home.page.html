@@ -1,20 +1,44 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs>
+  <ion-tab tab="tareas">
+    <div class="ajusteTab" id="tareas-page">
+      <app-tareas></app-tareas>
+    </div>
+  </ion-tab>
+  <ion-tab tab="categorias">
+    <div class="ajusteTab" id="categorias-page">
+      <app-categorias></app-categorias>
+    </div>
+  </ion-tab>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="tareas">
+      <ion-icon name="document-text-sharp"></ion-icon>
+      Tareas
+    </ion-tab-button>
+    <ion-tab-button tab="categorias">
+      <ion-icon name="bookmark-sharp"></ion-icon>
+      Categorias
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+<!--BOTON-->
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+
+  <ion-fab-list side="top">
+    <ion-fab-button [routerLink]="['tareas/crear']">
+      <ion-icon true name="create-sharp"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button [routerLink]="['categorias/crear']">
+      <ion-icon name="bookmarks-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+
+<!--MODAL CREAR CATEGORIAS-->
+<!--<app-modal-categorias></app-modal-categorias>-->
+
+<!--<app-modal-tareas [isModalOpen]="isModalTareasOpen"></app-modal-tareas>-->
