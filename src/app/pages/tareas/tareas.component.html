@@ -4,13 +4,13 @@
       Lista de tareas
     </ion-title>
   </ion-toolbar>
-  <ion-toolbar>
-    <ion-searchbar *ngIf="isOnBarraBusqueda" [(ngModel)]="barraBusqueda" placeholder="Buscar" show-clear-button="focus" [debounce]="500"
+  <ion-toolbar *ngIf="isOnBarraBusqueda">
+    <ion-searchbar [(ngModel)]="barraBusqueda" placeholder="Buscar" show-clear-button="focus" [debounce]="500"
       (ionInput)="filtrarTareas($event)">
     </ion-searchbar>
   </ion-toolbar>
 
-  <ion-list>
+  <ion-list *ngIf="!isOnBarraBusqueda">
     <ion-item>
       <ion-select (ionChange)="seleccionFiltroCategoria($event)" label="Categoria" [multiple]="true" placeholder="Sin filtros">
         <ion-select-option *ngFor="let categoria of categoriasArray" value="{{categoria.id}}">{{categoria.nombre}}</ion-select-option>
@@ -48,9 +48,9 @@
             </ion-card-content>
 
             <ion-button (click)="completarTarea(i)" *ngIf="!tarea.completada" fill="clear">Completar tarea</ion-button>
-            <ion-button (click)="completarTarea(i)" *ngIf="tarea.completada" fill="clear">
+            <!--<ion-button (click)="completarTarea(i)" *ngIf="tarea.completada" fill="clear">
               <ion-icon name="checkmark-done-sharp"></ion-icon>
-            </ion-button>
+            </ion-button> -->
             <ion-button (click)="eliminarTarea(i)" color="danger" fill="clear">Eliminar tarea</ion-button>
           </ion-card>
         </ion-col>
@@ -76,9 +76,9 @@
             </ion-card-content>
 
             <ion-button (click)="completarTarea(i)" *ngIf="!tarea.completada" fill="clear">Completar</ion-button>
-            <ion-button (click)="completarTarea(i)" *ngIf="tarea.completada" fill="clear">
+            <!--<ion-button (click)="completarTarea(i)" *ngIf="tarea.completada" fill="clear">
               <ion-icon name="checkmark-done-sharp"></ion-icon>
-            </ion-button>
+            </ion-button>-->
             <ion-button (click)="eliminarTarea(i)" color="danger" fill="clear">Eliminar</ion-button>
           </ion-card>
         </ion-col>

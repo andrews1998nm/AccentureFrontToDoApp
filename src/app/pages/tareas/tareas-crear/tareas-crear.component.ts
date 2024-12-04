@@ -15,7 +15,10 @@ export class TareasCrearComponent  implements OnInit {
   inputDesc: string;
   tarea: tarea;
 
-  constructor(private activatedRoute: ActivatedRoute, private tareasService: TareasService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    private tareasService: TareasService, 
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -51,9 +54,12 @@ export class TareasCrearComponent  implements OnInit {
         }
         this.tareasService.agregarTareas(tarea);
         this.tareasService.mostrarAlerta('top', 'Tarea creada exitosamente!', 'success')
+        this.retroceder();
       }
     }
   }
 
-  
+  retroceder(){
+    this.router.navigate(['/'])
+  }
 }

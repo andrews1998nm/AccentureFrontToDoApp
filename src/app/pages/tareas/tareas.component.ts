@@ -17,17 +17,23 @@ export class TareasComponent implements OnInit {
   tareasArraySearch: tarea[] = [];
   barraBusqueda: string = '';
   categoriasSeleccionadas: number[] = [];
-  isOnBarraBusqueda: boolean;
+  isOnBarraBusqueda: boolean = false;
 
   constructor(private tareasService: TareasService,
     private categoriasService: CategoriasService, private remoteFirebaseService: RemoteConfigService) { }
 
   ngOnInit() {
     //console.log(this.remoteFirebaseService.barraBusqueda);
-    this.remoteFirebaseService.searchBarEnabled$.subscribe( res =>{
-      console.log(res);
+    //this.remoteFirebaseService.;
+    /*this.remoteFirebaseService.barraBusqueda$.subscribe( res =>{
       this.isOnBarraBusqueda = res;
-    })
+    })*/
+
+    this.remoteFirebaseService.barraBusqueda$.subscribe((isEnabled) => {
+      this.isOnBarraBusqueda = isEnabled;
+      console.log('Barra de búsqueda habilitada:', this.isOnBarraBusqueda);
+    });
+
     //this.consolaEstadoBarraBusqueda();
     this.tareasArray = this.obtenerTareas();
     this.categoriasArray = this.obtenerCategoriasSeleccionar();
@@ -97,7 +103,6 @@ export class TareasComponent implements OnInit {
   }
 
   SeleccionCategoria(event, indexTarea: number) {
-    console.log('ionChange fired with value: ' + event.detail.value);
 
     let seleccion: number = event.detail.value;
 

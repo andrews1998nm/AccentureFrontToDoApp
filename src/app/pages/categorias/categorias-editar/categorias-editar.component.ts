@@ -14,7 +14,10 @@ export class CategoriasEditarComponent  implements OnInit {
   inputCategoria: string;
   categoria: categoria;
 
-  constructor(private activatedRoute: ActivatedRoute, private categoriasService: CategoriasService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private categoriasService: CategoriasService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -32,6 +35,10 @@ export class CategoriasEditarComponent  implements OnInit {
     }
   }
 
+  retroceder(){
+    this.router.navigate(['/'])
+  }
+
   guardarEdicion(){
     if(this.idEditar){
       let categoria:categoria = {
@@ -40,10 +47,12 @@ export class CategoriasEditarComponent  implements OnInit {
       }
       this.categoriasService.editarCategoria(categoria);
       this.categoriasService.mostrarAlerta('top', 'Categoria editada exitosamente!', 'success')
+      this.retroceder();
     }else{
       if(this.inputCategoria != ''){
         this.categoriasService.agregarCategoria(this.inputCategoria)
         this.categoriasService.mostrarAlerta('top', 'Categoria creada exitosamente!', 'success')
+        this.retroceder();
       }
     }
   }

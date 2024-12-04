@@ -28,6 +28,10 @@ export class CategoriasComponent  implements OnInit {
     this.categoriasService.mostrarAlerta('top', "Categoria eliminada!", "success");
   }
 
+  ionDrag(event){
+    console.log("DESLIZADO");
+  }
+
   listarCategorias(){
     return this.categoriasService.obtenerCategorias();
   }
